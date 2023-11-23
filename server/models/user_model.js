@@ -65,7 +65,7 @@ userSchema.pre('save',async function(next){
 userSchema.methods.generateToken = function(){
     let user = this; 
     const userObj = { _id:user._id.toHexString(), email:user.email };
-    const token = jwt.sign(userObj,process.env.DB_SECRET,{ expiresIn:'1d'});
+    const token = jwt.sign(userObj,"secret",{ expiresIn:'1d'});
     return token;
 }
 
