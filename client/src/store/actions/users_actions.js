@@ -2,13 +2,15 @@ import * as users from './index';
 import axios from 'axios';
 import { getAuthHeader,removeTokenCookie,getTokenCookie } from '../../utils/tools';
 
+axios.defaults.baseURL = 'http://localhost:3002';
+
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 
 export const registerUser = (values) => {
     return async(dispatch)=>{
         try{
-            const user = await axios.post(`/api/users/register`,{
+            const user = await axios.post(`/api/users/register/`,{
                 email: values.email,
                 password: values.password
             });

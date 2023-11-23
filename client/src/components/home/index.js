@@ -33,13 +33,15 @@ const Home = () => {
           CARROUSEL
         </div>
         <Grid container spacing={2} className="article_card">
-          { articles && articles.articles ?
+          { 
+          articles && articles.articles ?
             articles.articles.map((item)=>(
             <Grid key={item._id} item xs={12} sm={6} lg={3}>
               <ArticleCard key={item._id} article={item} />
             </Grid>
             ))
-          :null}
+          :null
+          }
         </Grid>
         <button
           onClick={()=>{

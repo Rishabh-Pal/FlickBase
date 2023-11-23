@@ -8,7 +8,7 @@ import {
     TextField,
     Divider
 } from '@mui/material';
-// import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@mui/icons-material/Edit';
 
 const AuthProfile = () => {
     const [emailModal,setEmailModal] = useState(false);
@@ -32,7 +32,7 @@ const AuthProfile = () => {
                         <TextField value={users.data.email} disabled/>
                     </Grid>
                     <Grid item>
-                        {/* <EditIcon color="primary" onClick={openModal}/> */}
+                        <EditIcon color="primary" onClick={openModal}/>
                     </Grid>
                 </Grid>
                 <Grid container spacing={1} alignItems="flex-end">
@@ -40,7 +40,7 @@ const AuthProfile = () => {
                         <TextField value="**********" disabled/>
                     </Grid>
                     <Grid item>
-                        {/* <EditIcon color="primary"/> */}
+                        <EditIcon color="primary"/>
                     </Grid>
                 </Grid>
             </div>

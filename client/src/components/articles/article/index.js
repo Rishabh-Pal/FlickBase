@@ -12,8 +12,8 @@ const Article = (props) => {
 
     useEffect(()=>{
         /// props.match.params.id   
-        dispatch(getArticle(props.match.params.id))
-    },[dispatch, props.match.params]);
+        dispatch(getArticle(props.params))
+    },[dispatch, props.params]);
 
     useEffect(()=>{
         return()=>{

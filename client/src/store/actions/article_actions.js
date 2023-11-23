@@ -2,7 +2,7 @@ import * as articles from './index';
 import axios from 'axios';
 import { getAuthHeader } from '../../utils/tools';
 
-
+axios.defaults.baseURL = 'http://localhost:3002';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const getArticles = (sort) => {

@@ -10,21 +10,21 @@ import {
     ListItemText,
     TextField
 } from '@mui/material';
-// import DehazeIcon from '@material-ui/icons/Dehaze';
-// import MailIcon from '@material-ui/icons/Mail';
-// import HomeIcon from '@material-ui/icons/Home';
-// import VpnKeyIcon from '@material-ui/icons/VpnKey';
-// import DashboardIcon from '@material-ui/icons/Dashboard';
+import DehazeIcon from '@mui/icons-material/Dehaze';
+import MailIcon from '@mui/icons-material/Mail';
+import HomeIcon from '@mui/icons-material/Home';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 const SideDrawer = ({users,signOutUser}) => {
     const [state,setState] = useState(false);
 
     return(
         <>
-            {/* <DehazeIcon
+            <DehazeIcon
                 className="drawer_btn"
                 onClick={()=> setState(true)}
-            /> */}
+            />
             <Drawer anchor={'right'} open={state} onClose={()=> setState(false)}>
 
                 <form style={{margin:'20px'}}>
@@ -35,18 +35,18 @@ const SideDrawer = ({users,signOutUser}) => {
                 <Divider/>
                 <List>
                     <ListItem button component={RouterLink} to="/" onClick={()=>setState(false)}>
-                        {/* <ListItemIcon><HomeIcon/></ListItemIcon> */}
+                        <ListItemIcon><HomeIcon/></ListItemIcon>
                         <ListItemText primary="Home"/>
                     </ListItem>
                     <ListItem button component={RouterLink} to="/contact" onClick={()=>setState(false)}>
-                        {/* <ListItemIcon><MailIcon/></ListItemIcon> */}
+                        <ListItemIcon><MailIcon/></ListItemIcon>
                         <ListItemText primary="Contact"/>
                     </ListItem>
 
 
                     { !users.auth ?
                         <ListItem button component={RouterLink} to="/auth" onClick={()=>setState(false)}>
-                            {/* <ListItemIcon><VpnKeyIcon/></ListItemIcon> */}
+                            <ListItemIcon><VpnKeyIcon/></ListItemIcon>
                             <ListItemText primary="Sign in"/>
                         </ListItem>
                     : 
@@ -54,7 +54,7 @@ const SideDrawer = ({users,signOutUser}) => {
                             signOutUser()
                             setState(false)
                         }}>
-                            {/* <ListItemIcon><VpnKeyIcon/></ListItemIcon> */}
+                            <ListItemIcon><VpnKeyIcon/></ListItemIcon>
                             <ListItemText primary="Sign out"/>
                         </ListItem>
                     }
@@ -66,7 +66,7 @@ const SideDrawer = ({users,signOutUser}) => {
                         <Divider/>
                         <List>
                             <ListItem button component={RouterLink} to="/dashboard" onClick={()=>setState(false)}>
-                                {/* <ListItemIcon><DashboardIcon/></ListItemIcon> */}
+                                <ListItemIcon><DashboardIcon/></ListItemIcon>
                                 <ListItemText primary="Dashboard"/>
                             </ListItem>
                         </List>

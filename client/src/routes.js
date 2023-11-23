@@ -1,6 +1,5 @@
-import React, { useEffect, useState  } from 'react';
-import { Routes, Route,BrowserRouter} from 'react-router-dom';  
-// import GoogleFontLoader from 'react-google-font-loader';
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Loader from './utils/loader';
 import MainLayout from './hoc/mainLayout';
 import AuthGuard from './hoc/authGuard';
@@ -18,52 +17,58 @@ import AddArticle from './components/dashboard/articles/add';
 import EditArticle from './components/dashboard/articles/edit';
 import Article from './components/articles/article';
 
-
 const Routers = () => {
-  const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
-  const users = useSelector(state=> state.users);
+  const users = useSelector(state => state.users);
 
-  useEffect(()=>{
-    dispatch(isAuthUser())
-  },[dispatch]);
+  useEffect(() => {
+    dispatch(isAuthUser());
+  }, [dispatch]);
 
-  useEffect(()=>{
-    if(users.auth !== null){
-      setLoading(false)
+  useEffect(() => {
+    if (users.auth !== null) {
+      setLoading(false);
     }
-  },[users]);
+  }, [users]);
 
-  return(
+  return (
     <BrowserRouter>
-      <Header/>
+      <Header />
 
-      { loading ?
-        <Loader/>
-      :
+      {loading ? (
+        <Loader />
+      ) : (
         <MainLayout>
           <Routes>
-          
-            <Route path="/dashboard/articles/edit/:id" component={AuthGuard(EditArticle,true)}/>
-            <Route path="/dashboard/articles/add" component={AuthGuard(AddArticle,true)}/>
-            <Route path="/dashboard/articles" component={AuthGuard(Articles,true)}/>
-            <Route path="/dashboard/profile" component={AuthGuard(Profile)}/>
-            <Route path="/dashboard" component={AuthGuard(Dashboard)}/>
-            <Route path="/article/:id" component={Article}/>
-            <Route path="/auth" component={Auth}/>
-            <Route path="/" component={Home}/>
+            <Route
+              path="/dashboard/articles/edit/:id"
+              element={<AuthGuard component={EditArticle} isPrivate={true} />}
+            />
+            <Route
+              path="/dashboard/articles/add"
+              element={<AuthGuard component={AddArticle} isPrivate={true} />}
+            />
+            <Route
+              path="/dashboard/articles"
+              element={<AuthGuard component={Articles} isPrivate={true} />}
+            />
+            <Route
+              path="/dashboard/profile"
+              element={<AuthGuard component={Profile} isPrivate={true} />}
+            />
+            <Route
+              path="/dashboard"
+              element={<AuthGuard component={Dashboard} isPrivate={true} />}
+            />
+            <Route path="/article/:id" element={<Article />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/" element={<Home />} />
           </Routes>
         </MainLayout>
-      }
-      {/* <GoogleFontLoader
-        fonts={[
-          { font:'Roboto', weights: [300,400,900]},
-          { font: 'Fredoka One'}
-        ]}
-      /> */}
+      )}
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default Routers;
-

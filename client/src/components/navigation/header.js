@@ -1,5 +1,5 @@
 import React,{ useEffect, useState } from 'react';
-import { Link} from 'react-router-dom';
+import { Link, useNavigate, useLocation} from 'react-router-dom';
 import SideDrawer from './sideNavigation';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,14 +13,16 @@ const Header = (props) => {
     const notifications = useSelector(state => state.notifications);
     const users = useSelector(state=> state.users);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const signOutUser = () => {
         dispatch(signOut())
-        props.history.push('/');
+        navigate('/');
     }
 
     useEffect(()=>{
-        let pathArray = props.location.pathname.split('/');
+        let pathArray = location.pathname.split('/');
         if(pathArray[1] === 'dashboard'){
             setLayout('dash_layout');
             dispatch(appLayout('dash_layout'))
@@ -28,7 +30,7 @@ const Header = (props) => {
             setLayout('');
             dispatch(appLayout(''))
         }
-    },[props.location.pathname, dispatch])
+    },[location.pathname, dispatch])
 
 
     useEffect(()=>{

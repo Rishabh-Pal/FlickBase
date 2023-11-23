@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose  = require('mongoose');
+const cors = require("cors")
 const bodyParser = require("body-parser");
 require('dotenv').config(); 
 
@@ -16,6 +17,7 @@ mongoose.connect(mongoUri,{
 
 
 app.use(bodyParser.json())
+app.use(cors())
 app.use(checkToken)
 app.use("/api/users",users)
 app.use("/api/articles",articles)
